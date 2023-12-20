@@ -1,0 +1,26 @@
+{
+    "id": 1,
+    "name": "https://api.ownthink.com/kg/knowledge",
+    "nodes": [
+        {
+            "id": 2,
+            "name": "Apache JSPWiki 跨站请求伪造漏洞",
+            "relation": "跨站请求伪造"
+        },
+        {
+            "id": 3,
+            "name": "Apache Spark 命令注入漏洞",
+            "relation": "操作系统命令注入"
+        },
+        {
+            "id": 4,
+            "name": "NGINX 代码注入漏洞",
+            "relation": "代码注入"
+        },
+        {
+            "id": 5,
+            "name": "Django SQL注入漏洞",
+            "relation": "SQL注入"
+        }
+    ]
+}

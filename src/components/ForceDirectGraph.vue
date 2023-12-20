@@ -8,29 +8,30 @@ export default {
   data() {
     return {
       graphData: {
-        nodes: [
-          { id: 1, name: 'A' },
-          { id: 2, name: 'B' },
-          { id: 3, name: 'C' },
-          { id: 4, name: 'D' },
-          { id: 5, name: 'E' },
-          { id: 6, name: 'F' }
-        ],
-        edges: [
-          { source: 1, target: 2, relation: 'AB', value: 100 },
-          { source: 1, target: 3, relation: 'AC', value: 50 },
-          { source: 1, target: 4, relation: 'AD', value: 10 },
-          { source: 1, target: 5, relation: 'AE', value: 1000 },
-          { source: 1, target: 6, relation: 'AF', value: 10000 }
-        ],
+        nodes: [],
+        edges: []
       },
       color: ['#40E0D0', '#FFD700']
     }
   },
   mounted() {
+    // 导入json
+    this.importData()
     this.drawDirectGraph()
   },
   methods: {
+    importData() {
+      const graph1 = require('../static/json/graph1.json')
+      this.constructData(graph1)
+    },
+    constructData(jsonData) {
+      this.graphData.nodes.push({ id: jsonData.id, name: jsonData.name })
+      const source = jsonData.id
+      for (const node of jsonData.nodes) {
+        this.graphData.nodes.push({ id: node.id, name: node.name })
+        this.graphData.edges.push({ source: source, target: node.id, relation: node.relation })
+      }
+    },
     drawDirectGraph() {
       const width = 1400
       const height = 600
@@ -42,7 +43,8 @@ export default {
         .attr('viewbox', [0, 0, width, height])
         .attr('width', width)
         .attr('height', height)
-        .style('background-color', 'transparent');
+        .style('background-color', 'transparent')
+        .attr('transform', 'translate(0, 80)');
 
       // 设置力导向图
       this.simulation = this.setupSimulation(width, height)
@@ -200,7 +202,8 @@ export default {
         .attr('viewbox', [0, 0, 1400, 600])
         .attr('width', 1400)
         .attr('height', 600)
-        .style('background-color', 'transparent');
+        .style('background-color', 'transparent')
+        .attr('transform', 'translate(0, 80)');
 
       // 重新绘制整个图形
       this.graphElements = this.drawGraphElements(this.svg, this.color);
@@ -248,7 +251,8 @@ export default {
         .attr('viewbox', [0, 0, 1400, 600])
         .attr('width', 1400)
         .attr('height', 600)
-        .style('background-color', 'transparent');
+        .style('background-color', 'transparent')
+        .attr('transform', 'translate(0, 80)');
 
       // 重新绘制整个图形
       this.graphElements = this.drawGraphElements(this.svg, this.color);
