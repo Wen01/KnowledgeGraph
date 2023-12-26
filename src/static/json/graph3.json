@@ -1,0 +1,56 @@
+{
+    "id": 3,
+    "name": "Apache Spark 命令注入漏洞",
+    "nodes": [
+        {
+            "id": 16,
+            "name": "Apache Spark和Spark",
+            "relation": "受影响实体"
+        },
+        {
+            "id": 17,
+            "name": "目前厂商已发布升级补丁以修复漏洞，补丁获取链接：https://lists.apache.org/thread/p847l3kopoo5bjtmxrcwk21xp6tjxqlc",
+            "relation": "漏洞解决方案"
+        },
+        {
+            "id": 18,
+            "name": "CVE-2022-33891",
+            "relation": "CVE编号"
+        },
+        {
+            "id": 19,
+            "name": "CNNVD-202207-1463",
+            "relation": "CNNVD编号"
+        },
+        {
+            "id": 20,
+            "name": "中危",
+            "relation": "危害等级"
+        },
+        {
+            "id": 21,
+            "name": "操作系统命令注入",
+            "relation": "漏洞类型"
+        },
+        {
+            "id": 22,
+            "name": "2022-07-17 16:00:00.000",
+            "relation": "发布时间"
+        },
+        {
+            "id": 23,
+            "name": "2022-07-18 16:00:00.000",
+            "relation": "更新时间"
+        },
+        {
+            "id": 24,
+            "name": "Apache Spark是美国阿帕奇（Apache）基金会的一款支持非循环数据流和内存计算的大规模数据处理引擎。Apache Spark 存在操作系统命令注入漏洞，该漏洞源于Apache Spark UI中的 ACL 功能中的输入验证不正确。远程攻击者利用该漏洞可以请求特制 URL 并在目标系统上执行任意操作系统命令。",
+            "relation": "漏洞简介"
+        },
+        {
+            "id": 25,
+            "name": "http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202207-1463",
+            "relation": "漏洞来源地址"
+        }
+    ]
+}

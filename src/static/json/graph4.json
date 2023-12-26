@@ -1,0 +1,51 @@
+{
+    "id": 4,
+    "name": "NGINX 代码注入漏洞",
+    "nodes": [
+        {
+            "id": 26,
+            "name": "目前厂商已发布升级补丁以修复漏洞，补丁获取链接：https://support.f5.com/csp/article/K57735782",
+            "relation": "漏洞解决方案"
+        },
+        {
+            "id": 27,
+            "name": "CVE-2022-23008",
+            "relation": "CVE编号"
+        },
+        {
+            "id": 28,
+            "name": "CNNVD-202201-2128",
+            "relation": "CNNVD编号"
+        },
+        {
+            "id": 29,
+            "name": "高危",
+            "relation": "危害等级"
+        },
+        {
+            "id": 30,
+            "name": "代码注入",
+            "relation": "漏洞类型"
+        },
+        {
+            "id": 31,
+            "name": "2022-01-21 00:00:00.000",
+            "relation": "发布时间"
+        },
+        {
+            "id": 32,
+            "name": "2022-03-10 00:00:00.000",
+            "relation": "更新时间"
+        },
+        {
+            "id": 33,
+            "name": "Nginx是美国Nginx公司的一款轻量级Web服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器。 NGINX 存在代码注入漏洞，该漏洞源于允许攻击者读取/写入 NGINX data plane instance 上的文件。对文件的访问仅限于运行 NGINX 进程的用户，通常是nginx用户。",
+            "relation": "漏洞简介"
+        },
+        {
+            "id": 34,
+            "name": "http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202201-2128",
+            "relation": "漏洞来源地址"
+        }
+    ]
+}

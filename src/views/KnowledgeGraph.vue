@@ -1,28 +1,36 @@
 <template>
   <div id="mainScreen">
-    <div class="title">
+    <!-- <div class="title">
       <el-input
         v-model="searchWord"
       >
         <i slot="suffix" class="el-icon-search"></i>
       </el-input>
-    </div>
+    </div> -->
     <div class="content">
-      <ForceDirectGraph />
+      <SideDialog @sendWord="receiveSearchInput" />
+      <ForceDirectGraph :searchWord="searchInput" />
     </div>
   </div>
 </template>
 
 <script>
 import ForceDirectGraph from '@/components/ForceDirectGraph.vue'
+import SideDialog from '@/components/SideDialog.vue'
 export default {
   name: 'KnowledgeGraph',
   components: {
-    ForceDirectGraph
+    ForceDirectGraph,
+    SideDialog
   },
   data() {
     return {
-      searchWord: ''
+      searchInput: ''
+    }
+  },
+  methods: {
+    receiveSearchInput(searchInput) {
+      this.searchInput = searchInput
     }
   }
 }
@@ -70,5 +78,4 @@ $ratio: 1920 / 76.8; // 缩放比   25
   color: cyan;
   font-size: 16px;
 }
-
 </style>

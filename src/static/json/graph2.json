@@ -1,0 +1,56 @@
+{
+    "id": 2,
+    "name": "Apache JSPWiki 跨站请求伪造漏洞",
+    "nodes": [
+        {
+            "id": 6,
+            "name": "Apache JSPWiki",
+            "relation": "受影响实体"
+        },
+        {
+            "id": 7,
+            "name": "目前厂商已发布升级补丁以修复漏洞，补丁获取链接：https://lists.apache.org/thread/txrgykjkpt80t57kzpbjo8kfrv8ss02c",
+            "relation": "漏洞解决方案"
+        },
+        {
+            "id": 8,
+            "name": "CVE-2022-24947",
+            "relation": "CVE编号"
+        },
+        {
+            "id": 9,
+            "name": "CNNVD-202202-2028",
+            "relation": "CNNVD编号"
+        },
+        {
+            "id": 10,
+            "name": "高危",
+            "relation": "危害等级"
+        },
+        {
+            "id": 11,
+            "name": "跨站请求伪造",
+            "relation": "漏洞类型"
+        },
+        {
+            "id": 12,
+            "name": "2022-02-24 16:00:00.000",
+            "relation": "发布时间"
+        },
+        {
+            "id": 13,
+            "name": "2022-02-28 16:00:00.000",
+            "relation": "更新时间"
+        },
+        {
+            "id": 14,
+            "name": "Apache JSPWiki是美国阿帕奇（Apache）基金会的一款基于Java、Servlet和JSP构建的开源WikiWiki引擎。Apache JSPWiki 存在代码注入漏洞，该漏洞允许攻击者通过Apache JSPWiki 用户偏好表单进行跨站请求伪造攻击，这可能导致帐户被攻击者接管。",
+            "relation": "漏洞简介"
+        },
+        {
+            "id": 15,
+            "name": "http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-2028",
+            "relation": "漏洞来源地址"
+        }
+    ]
+}

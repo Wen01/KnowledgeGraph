@@ -1,0 +1,56 @@
+{
+    "id": 5,
+    "name": "Django SQL注入漏洞",
+    "nodes": [
+        {
+            "id": 35,
+            "name": "Django:3.2.14 版本之前 3.2 版本和 4.0.6 版本之前的 4.0 版本",
+            "relation": "受影响实体"
+        },
+        {
+            "id": 36,
+            "name": "目前厂商已发布升级补丁以修复漏洞，补丁获取链接：https://www.djangoproject.com/weblog/2022/jul/04/security-releases/",
+            "relation": "漏洞解决方案"
+        },
+        {
+            "id": 37,
+            "name": "CVE-2022-34265",
+            "relation": "CVE编号"
+        },
+        {
+            "id": 38,
+            "name": "CNNVD-202207-347",
+            "relation": "CNNVD编号"
+        },
+        {
+            "id": 39,
+            "name": "超危",
+            "relation": "危害等级"
+        },
+        {
+            "id": 40,
+            "name": "SQL注入",
+            "relation": "漏洞类型"
+        },
+        {
+            "id": 41,
+            "name": "2022-07-03 16:00:00.000",
+            "relation": "发布时间"
+        },
+        {
+            "id": 42,
+            "name": "2022-07-13 16:00:00.000",
+            "relation": "更新时间"
+        },
+        {
+            "id": 43,
+            "name": "Django是Django基金会的一套基于Python语言的开源Web应用框架。该框架包括面向对象的映射器、视图系统、模板系统等。Django 3.2.14 版本之前 3.2 版本和 4.0.6 版本之前的 4.0 版本存在SQL注入漏洞，该漏洞源于如果将不受信任的数据用作 kind/lookup_name 值，则 Trunc() 和 Extract() 数据库函数会受到 SQL 注入的影响。",
+            "relation": "漏洞简介"
+        },
+        {
+            "id": 44,
+            "name": "http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202207-347",
+            "relation": "漏洞来源地址"
+        }
+    ]
+}
