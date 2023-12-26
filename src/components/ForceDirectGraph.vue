@@ -16,20 +16,22 @@ export default {
       },
       color: ['#40E0D0', '#FFD700'],
       width: '',
-      height: ''
+      height: '',
+      zoom: null,
+      zoomScale: 1,
+      translateX: 0,
+      translateY: 0
     }
   },
   watch: {
     searchWord(newVal) {
-      console.log('change')
       if (newVal === 'https://api.ownthink.com/kg/knowledge') {
         // 导入json
         this.importData()
         this.drawDirectGraph()
         window.addEventListener('resize', this.handleResize)
       } else {
-        this.graphData.nodes = []
-        this.graphData.edges = []
+        this.graphData = { nodes: [], edges: [] }
         this.drawDirectGraph()
       }
     },
@@ -49,6 +51,7 @@ export default {
       this.simulation.restart();
     },
     importData() {
+      this.graphData = { nodes: [], edges: [] }
       const graph1 = require('../static/json/graph1.json')
       this.constructData(graph1)
     },
@@ -85,6 +88,10 @@ export default {
       // 添加拖拽
       const drag = this.setupDrag(this.simulation)
       this.graphElements.node.call(drag)
+
+      this.zoom = d3.zoom().scaleExtent([0.1, 2])
+        .on('zoom', this.handleZoom)
+      this.svg.call(this.zoom)
 
       this.simulation.on('tick', () => {
         this.updateGraphElements(this.graphElements)
@@ -171,17 +178,33 @@ export default {
         d.fy = null
       }
     },
+    handleZoom(event) {
+      const { transform } = event
+      this.zoomScale = transform.k
+      this.translateX = transform.x
+      this.translateY = transform.y
+      this.updateGraphElements(this.graphElements)
+    },
     // 更新图形元素
     updateGraphElements(graphElements) {
-      graphElements.link.attr('x1', d => d.source.x)
-        .attr('y1', d => d.source.y)
-        .attr('x2', d => d.target.x)
-        .attr('y2', d => d.target.y)
-      graphElements.node.attr('cx', d => d.x).attr('cy', d => d.y);
-      graphElements.edges_text.attr('x', d => (d.source.x + d.target.x) / 2)
-        .attr('y', d => (d.source.y + d.target.y) / 2)
-      graphElements.texts.attr('x', d => d.x)
-        .attr('y', d => d.y)
+      graphElements.link.attr('x1', d => (d.source.x + this.translateX) * this.zoomScale)
+        .attr('y1', d => (d.source.y + this.translateY) * this.zoomScale)
+        .attr('x2', d => (d.target.x + this.translateX) * this.zoomScale)
+        .attr('y2', d => (d.target.y + this.translateY) * this.zoomScale)
+
+      graphElements.node.attr('cx', d => (d.x + this.translateX) * this.zoomScale)
+        .attr('cy', d => (d.y + this.translateY) * this.zoomScale)
+        .attr('r', 16 * this.zoomScale)
+
+      graphElements.edges_text.attr('x', d => this.zoomScale * (d.source.x + d.target.x + 2 * this.translateX) / 2)
+        .attr('y', d => this.zoomScale * (d.source.y + d.target.y + 2 * this.translateY) / 2)
+
+      graphElements.texts.attr('x', d => (d.x + this.translateX) * this.zoomScale)
+        .attr('y', d => (d.y + this.translateY) * this.zoomScale)
+
+      graphElements.edges_text.style('font-size', 12 * this.zoomScale)
+
+      graphElements.texts.style('font-size', 12 * this.zoomScale + 'px')
     },
     handleNodeClick(event, clickNode) {
       let haveChildren = this.graphData.edges.some(edge => edge.source.id === clickNode.id)
@@ -218,6 +241,9 @@ export default {
       this.graphElements = this.drawGraphElements(this.svg, this.color)
       const drag = this.setupDrag(this.simulation)
       this.graphElements.node.call(drag)
+      this.zoom = d3.zoom().scaleExtent([0.1, 4])
+        .on('zoom', this.handleZoom)
+      this.svg.call(this.zoom)
 
       // 更新图形元素
       this.updateGraphElements(this.graphElements);
@@ -270,6 +296,9 @@ export default {
       this.graphElements = this.drawGraphElements(this.svg, this.color)
       const drag = this.setupDrag(this.simulation)
       this.graphElements.node.call(drag)
+      this.zoom = d3.zoom().scaleExtent([0.1, 4])
+        .on('zoom', this.handleZoom)
+      this.svg.call(this.zoom)
 
       // 更新图形元素
       this.updateGraphElements(this.graphElements);
